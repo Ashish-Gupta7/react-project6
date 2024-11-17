@@ -17,7 +17,7 @@ const Home = () => {
       setfilteredProducts(products.filter((p) => p.category == category));
   }, [category, products]);
 
-  return products ? (
+  return (
     <>
       <Nav />
       <div className="w-[85%] h-full overflow-x-hidden overflow-y-auto">
@@ -42,8 +42,6 @@ const Home = () => {
         </div>
       </div>
     </>
-  ) : (
-    <Loading />
   );
 };
 
