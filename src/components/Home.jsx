@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import Nav from "./Nav";
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
-import Loading from "./Loading";
 
 const Home = () => {
   const [products] = useContext(ProductContext);

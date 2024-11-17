@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { ProductContext } from "../utils/Context";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
@@ -19,11 +19,20 @@ const Create = () => {
 
   const handleFormSubmit = (data) => {
     const updatedData = { id: nanoid(), ...data };
-    setproducts([...products, updatedData]);
-    localStorage.setItem(
-      "products",
-      JSON.stringify([...products, updatedData])
-    );
+    if (products == null) {
+      setproducts([updatedData]);
+    } else {
+      setproducts([...products, updatedData]);
+    }
+
+    if (products == null) {
+      localStorage.setItem("products", JSON.stringify([updatedData]));
+    } else {
+      localStorage.setItem(
+        "products",
+        JSON.stringify([...products, updatedData])
+      );
+    }
     toast.success("Product Created Successfully");
     reset();
     navigate("/");
